@@ -9,9 +9,13 @@ const body = document.querySelector('body');
 
 let timerId = null;
 
-startBtn.addEventListener('click', () => {    
+startBtn.addEventListener('click', () => {
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
      timerId = setInterval(() => {body.style.backgroundColor =  getRandomHexColor()}, 1000)
-     startBtn.disabled = true;
+    
+  
+
  });
 
 
