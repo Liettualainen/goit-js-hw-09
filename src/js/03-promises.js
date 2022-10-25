@@ -18,12 +18,15 @@ function createPromise(position, delay) {
       }, delay);
     });
     return promise;
+
   }
   
   submitBtn.addEventListener('click', event => {
     event.preventDefault();
+   
     let firstDelay = Number(delay.value);
     let delayStep = Number(step.value);
+   
     for (let i = 0; i < amount.value; i += 1) {
       createPromise(i + 1, firstDelay + i*delayStep)
         .then(({ position, delay }) => {
@@ -35,7 +38,11 @@ function createPromise(position, delay) {
           Notiflix.Notify.failure(
             `❌ Rejected promise ${position} in ${delay}ms`
           );
-        });
-    }
+        })       
+    }   
+    delay.value = "";
+    step.value = "";
+    amount.value = "";
   });
+
 
